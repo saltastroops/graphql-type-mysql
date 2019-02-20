@@ -1,0 +1,56 @@
+{
+  "name": "graphql-type-mysql",
+  "version": "0.1.0",
+  "description": "Custom scalar GraphQL types for MySQL",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write package.json src/*.{js,json,md,ts,tsx} src/**/*.{js,json,md,ts,tsx}",
+    "lint": "tslint --project tsconfig.json 'src/**/*.{ts,tsx}'",
+    "lint:fix": "tslint --fix 'src/**/*.{ts,tsx}'",
+    "postversion": "git push && git push --tags",
+    "prepublishOnly": "npm test && npm run lint && npm run build",
+    "preversion": "npm test && npm run lint",
+    "test": "jest --config jestconfig.json",
+    "test:watch": "jest --watch --config jestconfig.json"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,tsx,json,css,graphql,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saltastroops/graphql-type-mysql.git"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "keywords": [
+    "GraphQL",
+    "type",
+    "database"
+  ],
+  "author": "SALT Astronomy Operations",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saltastroops/graphql-type-mysql/issues"
+  },
+  "homepage": "https://github.com/saltastroops/graphql-type-mysql#readme",
+  "dependencies": {
+    "@types/jest": "^24.0.6",
+    "jest": "^24.1.0",
+    "prettier": "^1.16.4",
+    "ts-jest": "^24.0.0",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.3.3"
+  }
+}
