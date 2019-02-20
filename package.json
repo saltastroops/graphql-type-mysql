@@ -46,11 +46,15 @@
   "homepage": "https://github.com/saltastroops/graphql-type-mysql#readme",
   "dependencies": {
     "@types/jest": "^24.0.6",
+    "graphql": "^14.1.1",
     "jest": "^24.1.0",
     "prettier": "^1.16.4",
     "ts-jest": "^24.0.0",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.0.7"
   }
 }
