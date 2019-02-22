@@ -1,5 +1,5 @@
 import { StringValueNode, ValueNode } from "graphql";
-import { DatabaseColumn } from "../index";
+import { DatabaseColumn } from "..";
 
 describe("DatabaseColumn", () => {
   describe("parseLiteral", () => {
