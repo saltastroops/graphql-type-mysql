@@ -1,33 +1,9 @@
 import { GraphQLScalarType, Kind, StringValueNode, ValueNode } from "graphql";
 import { hasOwnProperty } from "tslint/lib/utils";
 
-function parseDatabaseColumnValue(value: string) {
-  // Check whether the value contains whitespace or backticks
-  if (/[\s`]/.test(value)) {
-    throw new Error(
-      "The DatabaseColumn value must not contain whitespace or backticks."
-    );
-  }
-
-  // Parse the value into table and column
-  const [table, column, ...rest] = value.split(".");
-
-  // Check that both a table and a column are defined
-  if (!table || !column) {
-    throw new Error(
-      'The DatabaseColumn value must be of the form "table.column."'
-    );
-  }
-
-  // Check that there is only one dot in the value
-  if (rest.length) {
-    throw new Error("The DatabaseColumn value must contain exactly one dot.");
-  }
-
-  // Return the table and column as an object
-  return { table, column };
-}
-
+/**
+ * A custom scalar GraphQL type describing a database column.
+ */
 export const DatabaseColumn = new GraphQLScalarType({
   description: "A database column in the form table.column.",
   name: "DatabaseColumn",
@@ -175,3 +151,30 @@ export const DatabaseColumn = new GraphQLScalarType({
     return `${table}.${column}`;
   }
 });
+
+function parseDatabaseColumnValue(value: string) {
+  // Check whether the value contains whitespace or backticks
+  if (/[\s`]/.test(value)) {
+    throw new Error(
+      "The DatabaseColumn value must not contain whitespace or backticks."
+    );
+  }
+
+  // Parse the value into table and column
+  const [table, column, ...rest] = value.split(".");
+
+  // Check that both a table and a column are defined
+  if (!table || !column) {
+    throw new Error(
+      'The DatabaseColumn value must be of the form "table.column."'
+    );
+  }
+
+  // Check that there is only one dot in the value
+  if (rest.length) {
+    throw new Error("The DatabaseColumn value must contain exactly one dot.");
+  }
+
+  // Return the table and column as an object
+  return { table, column };
+}
