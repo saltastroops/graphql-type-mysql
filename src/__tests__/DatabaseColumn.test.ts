@@ -1,22 +1,22 @@
-import { StringValueNode, ValueNode } from "graphql";
+import { Kind, StringValueNode, ValueNode } from "graphql";
 import { DatabaseColumn } from "..";
 
 describe("DatabaseColumn", () => {
   describe("parseLiteral", () => {
     // Wrap strings in a StringNodeValue
     const s: (value: string) => StringValueNode = (value: string) => ({
-      kind: "StringValue",
+      kind: Kind.STRING,
       value
     });
 
     it("should reject literals which are not a string", () => {
       const args: ValueNode[] = [
-        { kind: "IntValue", value: "0" },
-        { kind: "IntValue", value: "7" },
-        { kind: "FloatValue", value: "-6.45" },
-        { kind: "BooleanValue", value: true },
-        { kind: "BooleanValue", value: false },
-        { kind: "ListValue", values: [{ kind: "StringValue", value: "A.B" }] }
+        { kind: Kind.INT, value: "0" },
+        { kind: Kind.INT, value: "7" },
+        { kind: Kind.FLOAT, value: "-6.45" },
+        { kind: Kind.BOOLEAN, value: true },
+        { kind: Kind.BOOLEAN, value: false },
+        { kind: Kind.LIST, values: [{ kind: "StringValue", value: "A.B" }] }
       ];
 
       for (let arg of args) {
