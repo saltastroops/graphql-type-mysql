@@ -1,2 +1,2 @@
-export * from "./graphql/DatabaseColumn";
-export * from "./graphql/DatabaseValue";
+export { DatabaseColumn } from "./graphql/DatabaseColumn";
+export { DatabaseValue } from "./graphql/DatabaseValue";
