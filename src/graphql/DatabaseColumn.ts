@@ -5,7 +5,7 @@ import { hasOwnProperty } from "tslint/lib/utils";
  * A custom scalar GraphQL type describing a database column.
  */
 export const DatabaseColumn = new GraphQLScalarType({
-  description: "A database column in the form table.column.",
+  description: "The `DatabaseColumn` scalar type represents a database column composed of a table and a column name. It expects a string value of the form table.column, where table and column must not contain whitespace, dots or backticks. The value is represented by an object with a table and a column property.",
   name: "DatabaseColumn",
 
   /**

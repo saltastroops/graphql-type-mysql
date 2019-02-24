@@ -5,7 +5,7 @@ import { GraphQLScalarType, Kind, ValueNode } from "graphql";
  */
 export const DatabaseValue = new GraphQLScalarType({
   name: "DatabaseValue",
-  description: "A database value.",
+  description: "The `DatabaseValue` scalar type represents a database value. The boolean values `true` and `false` are represented by 1 and 0, respectively. Only scalar values are accepted.",
 
   /**
    * Parse a literal (value node).
