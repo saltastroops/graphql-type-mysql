@@ -4,8 +4,9 @@ import { GraphQLScalarType, Kind, ValueNode } from "graphql";
  * A custom scalar GraphQL type describing a database value.
  */
 export const DatabaseValue = new GraphQLScalarType({
+  description:
+    "The `DatabaseValue` scalar type represents a database value. The boolean values `true` and `false` are represented by 1 and 0, respectively. Only scalar values are accepted.",
   name: "DatabaseValue",
-  description: "The `DatabaseValue` scalar type represents a database value. The boolean values `true` and `false` are represented by 1 and 0, respectively. Only scalar values are accepted.",
 
   /**
    * Parse a literal (value node).
@@ -32,7 +33,7 @@ export const DatabaseValue = new GraphQLScalarType({
   parseLiteral: (ast: ValueNode) => {
     switch (ast.kind) {
       case Kind.INT:
-        return parseInt(ast.value);
+        return parseInt(ast.value, 10);
       case Kind.FLOAT:
         return parseFloat(ast.value);
       case Kind.STRING:

@@ -1,11 +1,11 @@
 import { GraphQLScalarType, Kind, StringValueNode, ValueNode } from "graphql";
-import { hasOwnProperty } from "tslint/lib/utils";
 
 /**
  * A custom scalar GraphQL type describing a database column.
  */
 export const DatabaseColumn = new GraphQLScalarType({
-  description: "The `DatabaseColumn` scalar type represents a database column composed of a table and a column name. It expects a string value of the form table.column, where table and column must not contain whitespace, dots or backticks. The value is represented by an object with a table and a column property.",
+  description:
+    "The `DatabaseColumn` scalar type represents a database column composed of a table and a column name. It expects a string value of the form table.column, where table and column must not contain whitespace, dots or backticks. The value is represented by an object with a table and a column property.",
   name: "DatabaseColumn",
 
   /**
@@ -106,15 +106,18 @@ export const DatabaseColumn = new GraphQLScalarType({
     }
 
     // Objects need a table and a column property
-    if (!hasOwnProperty(value, "table") || !hasOwnProperty(value, "column")) {
+    if (
+      !(value as {}).hasOwnProperty("table") ||
+      !(value as {}).hasOwnProperty("column")
+    ) {
       throw new Error(
         "The object to serialize must have a table and a column property."
       );
     }
 
     // Both the table and the column property must have a string value
-    const table = value.table;
-    const column = value.column;
+    const table = (value as { table: any }).table;
+    const column = (value as { column: any }).column;
     if (typeof table !== "string") {
       throw new Error("The table property must have a string value.");
     }
