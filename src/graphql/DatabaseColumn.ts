@@ -26,7 +26,7 @@ export const DatabaseColumn = new GraphQLScalarType({
    *
    * Parameters:
    * -----------
-   * ast:
+   * ast(abstract syntax tree):
    *     The value node to parse.
    *
    * Returns:

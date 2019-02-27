@@ -159,7 +159,7 @@ If you send this query to the example server, the following data is returned.
 }
 ```
 
-If you want to learn more about custom scalar types in GraphQL, have a look at at https://encoded.io/graphql-custom-scalars/ and https://www.apollographql.com/docs/graphql-tools/scalars.html.
+If you want to learn more about custom scalar types in GraphQL, have a look at https://encoded.io/graphql-custom-scalars/ and https://www.apollographql.com/docs/graphql-tools/scalars.html.
 
 ## TypeScript support
 
